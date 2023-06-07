@@ -6,7 +6,7 @@ const { Character, Episode } = require("../db");
 const getAllCharacters = async () => {
   try {
     const characterDb = await Character.findAll({
-      includes: {
+      include: {
         model: Episode,
       }
     });
@@ -53,4 +53,5 @@ const getAllCharacters = async () => {
   }
 }
 
+// await getAllCharacters();
 module.exports = { getAllCharacters }

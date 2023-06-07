@@ -6,7 +6,7 @@ const characters = async (req, res) => {
   const { name, filter, page, order } = req.query;
 
   try {
-    // const allCharacters = await getAllCharacters();
+    await getAllCharacters();
     if (name) {
       let nameCharacters = await Character.findAll({
         where: {
@@ -26,8 +26,8 @@ const characters = async (req, res) => {
           status: filter,
         },
         //! Paginado hecho desde el back-end
-        limit: 6,//* Trae los personajes del 1 - 6
         offset: page,//* Inicial de paginado
+        limit: 6,//* Trae los personajes del 1 - 6
         //! Paginado hecho desde el back-end
         order: [["name", order]],//* ASC - DESC
         include: {
@@ -42,15 +42,14 @@ const characters = async (req, res) => {
         offset: page,//* Inicial de paginado
         limit: 6,//* Final paginado
         //! Paginado hecho desde el back-end
-        order: [["name", order]],//* ASC - DESC
-        includes: {
+        // order: [["name", order]],//* ASC - DESC
+        include: {
           model: Episode,
         }
       });
 
       return res.json(allCharacters);
     }
-    // return res.json(allCharacters);
   } catch (error) {
     console.log("Error en la ruta principal por: ", error)
   }
