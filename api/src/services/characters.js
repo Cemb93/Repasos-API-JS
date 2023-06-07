@@ -3,7 +3,7 @@ const { getAllCharacters } = require("../controllers/getAllCharacters");
 const { Character, Episode } = require("../db");
 
 const characters = async (req, res) => {
-  const { name, filter, page, order } = req.query;
+  const { name, filterStatus, page, order } = req.query;
 
   try {
     await getAllCharacters();
@@ -19,11 +19,11 @@ const characters = async (req, res) => {
       console.log("NOMBRES:", nameCharacters.length)
 
       return res.json(nameCharacters);
-    } else if (filter) {
+    } else if (filterStatus) {
       const filterCharacters = await Character.findAll({
         where: {
           //* Se filtra por status
-          status: filter,
+          status: filterStatus,
         },
         //! Paginado hecho desde el back-end
         offset: page,//* Inicial de paginado
