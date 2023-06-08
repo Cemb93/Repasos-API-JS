@@ -1,15 +1,12 @@
 const { DataTypes } = require("sequelize");
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define("character", {
-    // id: {
-    //   type: DataTypes.UUID,
-    //   defaultValue: DataTypes.UUIDV4,
-    //   primaryKey: true,
-    //   allowNull: false,
-    // },
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,25 +15,28 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM('Alive', 'Dead', 'unknown'),
       allowNull: false,
     },
-    species: {
-      type: DataTypes.STRING,
-    },
-    type: {
-      type: DataTypes.STRING,
-    },
-    gender: {
-      type: DataTypes.STRING,
-    },
-    origin: {
-      type: DataTypes.STRING,
-    },
-    location: {
-      type: DataTypes.STRING,
-    },
+    // species: {
+    //   type: DataTypes.STRING,
+    // },
+    // type: {
+    //   type: DataTypes.STRING,
+    // },
+    // gender: {
+    //   type: DataTypes.STRING,
+    // },
+    // origin: {
+    //   type: DataTypes.STRING,
+    // },
+    // location: {
+    //   type: DataTypes.STRING,
+    // },
     image: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // episodes: {
+    //   type: DataTypes.ARRAY(DataTypes.STRING),
+    // },
     //* Este sería mi personaje
     mine: {
       type: DataTypes.BOOLEAN,

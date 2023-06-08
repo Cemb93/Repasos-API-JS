@@ -8,6 +8,8 @@ const getAllCharacters = async () => {
     const characterDb = await Character.findAll({
       include: {
         model: Episode,
+        attributes: ["name"],
+        through: { attributes: [], },
       }
     });
     console.log("characters in db:", characterDb.length)
@@ -24,23 +26,39 @@ const getAllCharacters = async () => {
             return name;
           });
           episodeApi = await Promise.all(episodeApi);
+          // console.log("ALL EPISODES:", episodeApi);
           return {
-            id: el.id,
             name: el.name,
             status: el.status,
-            species: el.species,
-            type: !el.type.length ? "WHITOUT TYPE" : el.type,
-            gender: el.gender,
-            origin: el.origin.name,
-            location: el.location.name,
+            // species: el.species,
+            // type: !el.type.length ? "WHITOUT TYPE" : el.type,
+            // gender: el.gender,
+            // origin: el.origin.name,
+            // location: el.location.name,
             image: el.image,
-            episode: episodeApi,
+            // episodes: console.log("EACH EPISODE:", episodeApi),//ok
+            // episodes: episodeApi,
           }
         });
         infoApi = await Promise.all(infoApi);
-        console.log("infoApi:", infoApi.length);
+        // console.log("infoApi:", infoApi);//* Aca me muestra los episodios
 
-        infoApi = await Character.bulkCreate(infoApi);
+        infoApi.forEach(async el => {
+          // console.log("EACH EPISODE:", el.episodes);
+          await Character.findOrCreate({
+            where: {
+              name: el.name,
+              status: el.status,
+              image: el.image,
+              // episodes: el.episodes
+            }
+          });
+        });
+        
+        //! Aca no aparecen los Episodios
+        // infoApi = await Character.bulkCreate(infoApi);
+        // console.log("infoApi CONVERTIDA:", JSON.parse(JSON.stringify(infoApi)));
+        console.log("infoApi:", infoApi.length);
         return infoApi;
       } catch (error) {
         console.log("Error en la API por: ", error)

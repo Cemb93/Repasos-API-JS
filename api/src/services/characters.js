@@ -8,13 +8,17 @@ const characters = async (req, res) => {
   try {
     await getAllCharacters();
     if (name) {
-      let nameCharacters = await Character.findAll({
+      const nameCharacters = await Character.findAll({
         where: {
           name: {
-            // [Op.iLike]: '%' + name + '%',
             [Op.iLike]: `%${name}`,
           }
         },
+        include: {
+          model: Episode,
+          attributes: ["name"],
+          through: { attributes: [], },
+        }
       });
       console.log("NOMBRES:", nameCharacters.length)
 
@@ -32,6 +36,8 @@ const characters = async (req, res) => {
         order: [["name", order]],//* ASC - DESC
         include: {
           model: Episode,
+          // attributes: ["name"],
+          // through: { attributes: [], },
         }
       });
       
@@ -45,6 +51,8 @@ const characters = async (req, res) => {
         // order: [["name", order]],//* ASC - DESC
         include: {
           model: Episode,
+          attributes: ["name"],
+          through: { attributes: [], },
         }
       });
 
