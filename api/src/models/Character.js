@@ -15,28 +15,10 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM('Alive', 'Dead', 'unknown'),
       allowNull: false,
     },
-    // species: {
-    //   type: DataTypes.STRING,
-    // },
-    // type: {
-    //   type: DataTypes.STRING,
-    // },
-    // gender: {
-    //   type: DataTypes.STRING,
-    // },
-    // origin: {
-    //   type: DataTypes.STRING,
-    // },
-    // location: {
-    //   type: DataTypes.STRING,
-    // },
     image: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // episodes: {
-    //   type: DataTypes.ARRAY(DataTypes.STRING),
-    // },
     //* Este sería mi personaje
     mine: {
       type: DataTypes.BOOLEAN,

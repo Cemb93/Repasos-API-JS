@@ -17,7 +17,6 @@ const getAllEpisodes = async (_, res) => {
           name: ep.name,
         }
       });
-      console.log("EPISODES API:", episodesApi.length);
       episodesApi = await Episode.bulkCreate(episodesApi);
 
       return res.json(episodesApi);
