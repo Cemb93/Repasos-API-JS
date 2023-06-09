@@ -2,16 +2,12 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("character", {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     status: {
+      //* Estas son las únicas opciones
       type: DataTypes.ENUM('Alive', 'Dead', 'unknown'),
       allowNull: false,
     },
