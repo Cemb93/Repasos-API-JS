@@ -1,7 +1,7 @@
 const { Router } = require("express");
-const { characters } = require("../services/characters");
-const { getAllEpisodes } = require("../controllers/getAllEpisodes");
-const { postCharacter } = require("../services/post_character");
+const { characters } = require("../services/Rick_Morty/characters");
+const { getAllEpisodes } = require("../controllers/Rick_Morty/getAllEpisodes");
+const { postCharacter } = require("../services/Rick_Morty/post_character");
 
 const router = Router();
 

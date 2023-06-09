@@ -1,4 +1,4 @@
-const { Episode } = require("../db");
+const { Episode } = require("../../db");
 const fetch = require("node-fetch");
 require('dotenv').config()
 const { URL_EPISODE } = process.env;

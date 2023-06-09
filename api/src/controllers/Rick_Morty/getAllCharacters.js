@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { RICK_AND_MORTY } = process.env;
 const fetch = require("node-fetch");
-const { Character, Episode } = require("../db");
+const { Character, Episode } = require("../../db");
 
 //! NOTA: No se puede guardar RICK_AND_MORTY, la propiedad "episodes" COLICIONA al Relacionar
 const getAllCharacters = async () => {

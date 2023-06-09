@@ -1,4 +1,4 @@
-const { Character, Episode } = require("../db");
+const { Character, Episode } = require("../../db");
 
 const postCharacter = async (req, res) => {
   const character = req.body;

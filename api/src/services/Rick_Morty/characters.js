@@ -1,6 +1,6 @@
 const { Op } = require("sequelize");
-const { getAllCharacters } = require("../controllers/getAllCharacters");
-const { Character, Episode } = require("../db");
+const { getAllCharacters } = require("../../controllers/Rick_Morty/getAllCharacters");
+const { Character, Episode } = require("../../db");
 
 //? Paginado y Filtrado con Sequelize
 const characters = async (req, res) => {
