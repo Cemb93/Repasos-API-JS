@@ -4,15 +4,16 @@ const { Character, Episode } = require("../../db");
 
 //? Paginado y Filtrado con Sequelize
 const characters = async (req, res) => {
-  const { name, filterStatus, page, order } = req.query;
+  const { name, filterStatus, filterCreated, page, order } = req.query;
 
   try {
     await getAllCharacters();
     if (name) {
+      console.log("query name:", name)
       const nameCharacters = await Character.findAll({
         where: {
           name: {
-            [Op.iLike]: `%${name}`,
+            [Op.iLike]: `%${name}%`,
           }
         },
         include: {
@@ -28,7 +29,9 @@ const characters = async (req, res) => {
       const filterCharacters = await Character.findAll({
         where: {
           //* Se filtra por status
+          //! Se pueden filtros combinados, pero no pueden ser opcionales
           status: filterStatus,
+          // mine: filterCreated,
         },
         //! Paginado hecho desde el back-end
         offset: page,//* Inicial de paginado
@@ -64,4 +67,22 @@ const characters = async (req, res) => {
   }
 }
 
-module.exports = { characters }
+const characterDetail = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const characterId = await Character.findByPk(id, {
+      include: {
+        model: Episode,
+        attributes: ["name"],
+        through: { attributes: [], },
+      }
+    });
+
+    return res.json(characterId);
+  } catch (error) {
+    return res.json({ error: "Error en characterDetail por:", error });
+  }
+}
+
+module.exports = { characters, characterDetail }
