@@ -1,11 +1,16 @@
-import './App.css';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
+import Characters from "./components/Characters";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to my React app</h1>
-      </header>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={"/"} component={LandingPage} />
+          <Route exact path={"/characters"} component={Characters} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

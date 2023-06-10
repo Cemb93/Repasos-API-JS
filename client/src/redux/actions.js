@@ -7,11 +7,11 @@ export const getCharacters = (page, order, filter) => {
     const url = `${PORT}${BackEnd}?page=${page}&order=${order}&filter=${filter}`;
     try {
       const res = await fetch(url);
-      const { results } = await res.json();
+      const data = await res.json();
 
       dispatch({
         type: ActionTypes.getCharacters,
-        payload: results,
+        payload: data,
       })
     } catch (error) {
       console.log("Error en getCharacters por:", error);
