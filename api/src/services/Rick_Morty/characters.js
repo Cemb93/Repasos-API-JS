@@ -4,12 +4,11 @@ const { Character, Episode } = require("../../db");
 
 //? Paginado y Filtrado con Sequelize
 const characters = async (req, res) => {
-  const { name, filterStatus, filterCreated, page, order } = req.query;
+  const { name, filterStatus, page, order } = req.query;
 
   try {
     await getAllCharacters();
     if (name) {
-      console.log("query name:", name)
       const nameCharacters = await Character.findAll({
         where: {
           name: {
@@ -22,7 +21,6 @@ const characters = async (req, res) => {
           through: { attributes: [], },
         }
       });
-      console.log("NOMBRES:", nameCharacters.length)
 
       return res.json(nameCharacters);
     } else if (filterStatus) {
@@ -31,7 +29,6 @@ const characters = async (req, res) => {
           //* Se filtra por status
           //! Se pueden filtros combinados, pero no pueden ser opcionales
           status: filterStatus,
-          // mine: filterCreated,
         },
         //! Paginado hecho desde el back-end
         offset: page,//* Inicial de paginado

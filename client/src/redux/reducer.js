@@ -13,7 +13,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allCharacters: action.payload,
-        copyCharacters: action.payload,
+        // copyCharacters: action.payload,
       }
     default: return state;
   }
