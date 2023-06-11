@@ -4,6 +4,7 @@ import { getCharacters } from '../redux/actions';
 import { Link } from 'react-router-dom';
 import { Cards } from './Cards';
 import s from "../styles/Characters.module.css";
+import { SearchBar } from './SearchBar';
 
 export default function Characters() {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ export default function Characters() {
       <button onClick={(e) => handleClick(e)} >
         Cargar todos los personajes
       </button>
+      <SearchBar/>
       <div>
         <h4>Filter by status</h4>
         <select onChange={(e) => changeFilter(e)} >

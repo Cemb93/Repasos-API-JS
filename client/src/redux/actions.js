@@ -13,9 +13,26 @@ export const getCharacters = (page, order, filter) => {
       dispatch({
         type: ActionTypes.getCharacters,
         payload: data,
-      })
+      });
     } catch (error) {
       console.log("Error en getCharacters por:", error);
+    }
+  }
+}
+
+export const getByName = (name) => {
+  return async (dispatch) => {
+    const url = `${PORT}${BackEnd.C}?name=${name}`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      
+      dispatch({
+        type: ActionTypes.getName,
+        payload: data,
+      });
+    } catch (error) {
+      console.log("Error en getByName por:", error);
     }
   }
 }
