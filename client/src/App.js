@@ -9,6 +9,7 @@ function App() {
         <Switch>
           <Route exact path={"/"} component={LandingPage} />
           <Route exact path={"/characters"} component={Characters} />
+          <Route exact path={"/characters/:id"} component={Characters} />
         </Switch>
       </BrowserRouter>
     </div>

@@ -6,5 +6,5 @@ export const ActionTypes = {
 }
 
 export const BackEnd = {
-  characters: "/repaso/character",
+  C: "/repaso/character",
 }

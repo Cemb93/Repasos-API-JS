@@ -4,10 +4,11 @@ const PORT = "http://localhost:3001";
 
 export const getCharacters = (page, order, filter) => {
   return async (dispatch) => {
-    const url = `${PORT}${BackEnd}?page=${page}&order=${order}&filter=${filter}`;
+    const url = `${PORT}${BackEnd.C}?page=${page}&order=${order}&filter=${filter}`;
     try {
       const res = await fetch(url);
       const data = await res.json();
+      // console.log("ACTION:", data)
 
       dispatch({
         type: ActionTypes.getCharacters,
