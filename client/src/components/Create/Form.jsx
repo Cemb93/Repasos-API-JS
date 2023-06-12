@@ -11,7 +11,7 @@ export const Form = ({
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
-          <label htmlFor="">*Nombre del personaje </label>
+          <label>*Nombre del personaje: </label>
           <input
             type="text"
             name="name"//* Permite escribir en el input
@@ -21,9 +21,20 @@ export const Form = ({
           />
         </div>
         <div>
-          <label htmlFor="">*Episodios: </label>
+          <label>*Estados, </label>
+          <span>ej: Alive - Dead - unknown </span>
+          <input
+            type="text"
+            name="status"//* Permite escribir en el input
+            value={newC.status}
+            placeholder="Ej: Alive"
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
+        <div>
+          <label>*Episodios: </label>
           <select
-            // name="episodes"
+            //! Este atributo junto con la linea 40 de New.jsx Resetea el select
             value={newC.episodes}
             onChange={(e) => handleEpisodes(e)}
           >

@@ -55,17 +55,18 @@ export const getById = (id) => {
 }
 
 export const createCharacter = (form) => {
+  console.log("form:", form);
   return async (dispatch) => {
     const url = `${PORT}${BackEnd.C}`;
     try {
-      const res = await fetch(url, {
+      await fetch(url, {
         method: "POST",
         body: JSON.stringify(form),
         headers: {
           "Content-type": "application/json"
         }
       });
-      return res;
+      // console.log("res create:", res)
     } catch (error) {
       console.log("Error en createCharacter por:", error);
     }

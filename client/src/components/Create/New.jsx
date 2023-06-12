@@ -37,7 +37,10 @@ export const New = () => {
     if (newC.name) {
       dispatch(createCharacter(newC));
       alert(`El personaje ${newC.name.toUpperCase()} ha sido creado`);
+      //! Esta funcion junto con cada "value" de Form.jsx Resetea Formulario
       setNew(initialState);
+    } else {
+      alert("Debes de completar todos los campos");
     }
   }
   const handleEpisodes = e => {
