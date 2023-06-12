@@ -49,7 +49,7 @@ export default function Characters() {
   }
   return (
     <div>
-      <Link to={"/create"} >Crear Personaje</Link>
+      <Link to={"/character/create"} >Crear Personaje</Link>
       <br />
       <button onClick={(e) => handleClick(e)} >
         Cargar todos los personajes

@@ -53,3 +53,39 @@ export const getById = (id) => {
     }
   }
 }
+
+export const createCharacter = (form) => {
+  return async (dispatch) => {
+    const url = `${PORT}${BackEnd.C}`;
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(form),
+        headers: {
+          "Content-type": "application/json"
+        }
+      });
+      return res;
+    } catch (error) {
+      console.log("Error en createCharacter por:", error);
+    }
+  }
+}
+
+export const getEpisodes = () => {
+  return async (dispatch) => {
+    const url = `${PORT}${BackEnd.E}`;
+    try {
+      const data = await fetch(url).then(res => {
+        return res.json();
+      });
+
+      dispatch({
+        type: ActionTypes.getEpisodes,
+        payload: data,
+      })
+    } catch (error) {
+      
+    }
+  }
+}

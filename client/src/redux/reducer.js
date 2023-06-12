@@ -4,7 +4,7 @@ const initialState = {
   allCharacters: [],
   copyCharacters:[],
   detail: {},
-  episodes: [],
+  episode: [],
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -24,6 +24,11 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         detail: action.payload
+      }
+    case ActionTypes.getEpisodes:
+      return {
+        ...state,
+        episode: action.payload,
       }
     default: return state;
   }
