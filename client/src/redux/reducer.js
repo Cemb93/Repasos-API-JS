@@ -20,6 +20,11 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allCharacters: action.payload,
       }
+    case ActionTypes.getDetail:
+      return {
+        ...state,
+        detail: action.payload
+      }
     default: return state;
   }
 }

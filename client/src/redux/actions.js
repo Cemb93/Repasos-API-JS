@@ -36,3 +36,20 @@ export const getByName = (name) => {
     }
   }
 }
+
+export const getById = (id) => {
+  return async (dispatch) => {
+    const url = `${PORT}${BackEnd.C}/${id}`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      
+      dispatch({
+        type: ActionTypes.getDetail,
+        payload: data,
+      })
+    } catch (error) {
+      console.log("Error en getById por:", error);
+    }
+  }
+}
