@@ -10,6 +10,7 @@ export const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getByName(name));
+    //! Esta funcion junto con la linea 28 Resetea el input
     setName("");
   };
 
@@ -23,6 +24,8 @@ export const SearchBar = () => {
       <div>
         <input
           type="text"
+          //! Este Atributo junto con la linea 13 Resetea el input
+          value={name}
           placeholder="Buscar..."
           onChange={(e) => handleInputChange(e)}
         />
